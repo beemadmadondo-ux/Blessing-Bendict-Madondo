@@ -2,115 +2,141 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blessing Bendict Madondo | Producer Beemad - Official Portfolio</title>
-    <meta name="description" content="Official portfolio of Blessing Bendict Madondo (Producer Beemad) - A-Level STEM Student, Music Producer, and Software Developer based in Zimbabwe.">
-    <meta name="keywords" content="Blessing Bendict Madondo, Producer Beemad, DJ Beemad, Chillspot Music Limited, Rimuka 1 High School, Zimbabwe Music Producer">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>DJ Beemad - Virtual Deck</title>
     <style>
-        :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
-            --accent-color: #38bdf8;
-            --subtext: #94a3b8;
-        }
+        * { box-sizing: border-box; }
         body {
+            background-color: #0f172a;
+            color: #f8fafc;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            margin: 0;
-            padding: 20px;
-            display: flex;
-            justify-content: center;
-        }
-        .container {
-            max-width: 650px;
-            width: 100%;
-            margin-top: 40px;
-        }
-        .profile-card {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             text-align: center;
+            margin: 0;
+            padding: 15px;
         }
-        h1 {
-            margin-bottom: 5px;
-            font-size: 2rem;
+        h1 { color: #38bdf8; margin: 10px 0 2px 0; font-size: 1.5rem; }
+        p { color: #94a3b8; font-size: 0.9rem; margin-top: 0; }
+        .deck-container {
+            background-color: #1e293b;
+            max-width: 100%;
+            margin: 10px auto;
+            padding: 20px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 2px solid #334155;
         }
-        h2 {
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin-top: 0;
-        }
-        p {
-            color: var(--subtext);
-            line-height: 1.6;
-            text-align: left;
-        }
-        .tag-container {
+        .turntable {
+            width: 120px;
+            height: 120px;
+            background: #0f172a;
+            border: 5px solid #38bdf8;
+            border-radius: 50%;
+            margin: 15px auto;
             display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
+            align-items: center;
             justify-content: center;
-            margin: 20px 0;
-        }
-        .tag {
-            background: #334155;
-            padding: 6px 14px;
-            border-radius: 20px;
+            font-weight: bold;
+            color: #94a3b8;
             font-size: 0.85rem;
-            color: var(--accent-color);
         }
-        .links {
+        .controls {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-top: 25px;
+            text-align: left;
         }
-        .btn {
-            background-color: var(--accent-color);
+        button {
+            background-color: #38bdf8;
             color: #0f172a;
-            text-decoration: none;
-            padding: 12px;
+            border: none;
+            padding: 14px;
             border-radius: 8px;
             font-weight: bold;
-            transition: opacity 0.2s;
+            font-size: 1rem;
+            width: 100%;
+            cursor: pointer;
         }
-        .btn:hover {
-            opacity: 0.9;
+        label { font-size: 0.85rem; color: #94a3b8; }
+        input[type="range"], input[type="file"] {
+            width: 100%;
+            margin-top: 5px;
+            padding: 5px;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="profile-card">
-        <h1>Blessing Bendict Madondo</h1>
-        <h2>Producer Beemad | STEM Student & Developer</h2>
+    <h1>DJ Beemad</h1>
+    <p>Mobile Edition</p>
 
-        <div class="tag-container">
-            <span class="tag">A-Level STEM</span>
-            <span class="tag">Music Production</span>
-            <span class="tag">Software Development</span>
-            <span class="tag">Chillspot Music Ltd</span>
-        </div>
+    <div class="deck-container">
+        <div id="turntable" class="turntable">BEEMAD</div>
 
-        <p>
-            Welcome to my official page. I am <strong>Blessing Bendict Madondo</strong>, an A-Level STEM student at Rimuka 1 High School in Zimbabwe[span_1](start_span)[span_1](end_span). Alongside my academic focus in Mathematics, Physics, and Chemistry, I work as a music producer under the alias <strong>Producer Beemad</strong> and develop software projects including <strong>DJ Beemad</strong>[span_2](start_span)[span_2](end_span).
-        </p>
+        <div class="controls">
+            <div>
+                <label>Load Track:</label>
+                <input type="file" id="audioFile" accept="audio/*">
+            </div>
 
-        <p>
-            My goal is to merge technical discipline from STEM with creative audio engineering, building innovative media and software solutions[span_3](start_span)[span_3](end_span).
-        </p>
+            <button id="playBtn">PLAY / PAUSE</button>
 
-        <div class="links">
-            <a href="https://www.linkedin.com/in/blessing-bendict-madondo" class="btn" target="_blank">Connect on LinkedIn</a>
+            <div>
+                <label>Volume</label>
+                <input type="range" id="volumeControl" min="0" max="1" step="0.01" value="1">
+            </div>
+
+            <div>
+                <label>Tempo / Speed</label>
+                <input type="range" id="rateControl" min="0.5" max="2" step="0.1" value="1">
+            </div>
         </div>
     </div>
-</div>
+
+    <audio id="audioPlayer" preload="auto"></audio>
+
+    <script>
+        const audioFile = document.getElementById('audioFile');
+        const audioPlayer = document.getElementById('audioPlayer');
+        const playBtn = document.getElementById('playBtn');
+        const volumeControl = document.getElementById('volumeControl');
+        const rateControl = document.getElementById('rateControl');
+        const turntable = document.getElementById('turntable');
+
+        audioFile.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                audioPlayer.src = URL.createObjectURL(file);
+            }
+        });
+
+        playBtn.addEventListener('click', function() {
+            if (audioPlayer.paused) {
+                audioPlayer.play();
+                playBtn.style.backgroundColor = '#4ade80';
+                turntable.style.animation = "spin 2s linear infinite";
+            } else {
+                audioPlayer.pause();
+                playBtn.style.backgroundColor = '#38bdf8';
+                turntable.style.animation = "none";
+            }
+        });
+
+        volumeControl.addEventListener('input', function() {
+            audioPlayer.volume = volumeControl.value;
+        });
+
+        rateControl.addEventListener('input', function() {
+            audioPlayer.playbackRate = rateControl.value;
+        });
+    </script>
+
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 
 </body>
 </html>
+
